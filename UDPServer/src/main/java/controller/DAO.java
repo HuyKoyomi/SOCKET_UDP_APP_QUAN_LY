@@ -4,9 +4,8 @@
  */
 package controller;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.*;
+
 import model.User;
 
 /**
@@ -27,12 +26,7 @@ public class DAO {
 
         }
     }
-
     public boolean addUser(User u) {
-        System.out.println("Chạy addUser " + u.getCode() + " " + u.getFullname() + " " + u.getUsername() + " " + u.getPassword() );
-        if(u.getCode() == null){
-            return false;
-        }
         String sql = "INSERT INTO tblUser(code, username,password, fullname) VALUE (?,?,?,?)";
         try {
 
@@ -42,11 +36,30 @@ public class DAO {
             ps.setString(3, u.getPassword());
             ps.setString(4, u.getFullname());
             ps.executeUpdate();
+            System.out.println("Chức năng: Đăng ký tài khoản");
             return true;
 
         } catch (Exception e) {
             e.printStackTrace();
 
+        }
+        return false;
+    }
+    public boolean login(User u) {
+        try {
+            Statement sta=conn.createStatement();
+            String where = "SELECT * FROM tbluser ";
+            ResultSet re=sta.executeQuery(where);
+            while (re.next()) {
+                String tk =re.getString("username");
+                String mk =re.getString("password");
+                System.out.println(u.getUsername() + " " + u.getPassword());
+                if(tk.equalsIgnoreCase(u.getUsername()) && mk.equalsIgnoreCase(u.getPassword())) {
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }

@@ -43,13 +43,34 @@ public class ServerCtr {
     }
 
     public void execute() {
-        User u = receiveUser();
-        if (dao.addUser(u)) {
-            sendResult("ok");
-            new ServerView().showMessage("Thành công addUser");
-        } else {
-            new ServerView().showMessage("Thất bại addUser");
+        String action = receiveAction();
+
+        System.out.println("action:"+ action);
+        switch (action ){
+            // đăng nhập
+            case "1":
+                User u1 = receiveUser();
+                if (dao.login(u1)) {
+                    sendResult("ok");
+                    new ServerView().showMessage("action " + action + " Thành công");
+                } else {
+                    sendResult("fail");
+                    new ServerView().showMessage("action " + action + "Thất bại");
+                }
+                break;
+            // đăng ký
+            case "2":
+                User u2 = receiveUser();
+                if (dao.addUser(u2)) {
+                    sendResult("ok");
+                    new ServerView().showMessage("action " + action + " Thành công");
+                } else {
+                    sendResult("fail");
+                    new ServerView().showMessage("action " + action + "Thất bại");
+                }
+                break;
         }
+
 
     }
 
@@ -83,19 +104,30 @@ public class ServerCtr {
         return u;
     }
 
-//    public String receiveAction() {
-//        String res = "";
-//        try {
-//            byte[] data = new byte[1024];
-//            receivePacket = new DatagramPacket(data, data.length);
-//            myServer.receive(receivePacket);
-//            ByteArrayInputStream bais = new ByteArrayInputStream(receivePacket.getData());
-//            ObjectInputStream ois = new ObjectInputStream(bais);
-//            User result = (User) ois.readObject();
-//            return result ;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return u;
-//    }
-//}
+    public String receiveAction() {
+        try {
+            byte[] data = new byte[1024];
+            DatagramPacket receivePkg = new DatagramPacket(data, data.length);
+            myServer.receive(receivePkg);
+            ByteArrayInputStream bais = new ByteArrayInputStream(receivePkg.getData());
+            // lây dư liệu
+            ObjectInputStream ois = new ObjectInputStream(bais);
+//            closeConnection();
+            return (String) ois.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public void closeConnection() {
+        System.out.println("Close!");
+        try {
+            if (myServer != null) {
+                myServer.close();
+            }
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+    }
+}

@@ -22,6 +22,7 @@ public class ClientCtr {
     private int serverPort, clientPort;
     private String serverHost;
     private DatagramSocket mySocket;
+    private DatagramPacket receivePacket;
 
     public ClientCtr() {
         serverPort = 7777;
@@ -47,6 +48,20 @@ public class ClientCtr {
             if (mySocket != null) {
                 mySocket.close();
             }
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+    }
+
+    // send acction
+    public void sendAcction(String acction) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(acction);
+            byte[] data = baos.toByteArray();
+            DatagramPacket pkg = new DatagramPacket(data, data.length, InetAddress.getByName(serverHost), serverPort);
+            mySocket.send(pkg);
         } catch (Exception err) {
             err.printStackTrace();
         }

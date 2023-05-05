@@ -4,9 +4,11 @@
  */
 package view;
 
+import controller.ClientCtr;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import model.User;
 
 /**
  *
@@ -125,7 +127,7 @@ public class LoginView extends javax.swing.JFrame implements ActionListener {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +136,7 @@ public class LoginView extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
@@ -222,6 +224,23 @@ public class LoginView extends javax.swing.JFrame implements ActionListener {
     }
 
     public void btnLoginClick() {
+        User u = new User();
+        String pass = "";
+        char[] x = txtPassword.getPassword();
+        for (char i : x) {
+            pass += i;
+        }
+        u.setUsername(txtUsername.getText());
+        u.setPassword(pass);
+        ClientCtr ctr = new ClientCtr();
+        ctr.sendAcction("1");
+        ctr.sendUser(u);
+        String res = ctr.receiveUser();
+        if (res.equals("ok")) {
+            JOptionPane.showMessageDialog(rootPane, "Đăng nhâp thành công");
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Đăng nhâp thất bại");
+        }
     }
 
     public void btnRegisterClick() {
