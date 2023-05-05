@@ -1,0 +1,27 @@
+
+>
+java:S1604?"(Make this anonymous inner class a lambda(ã¢•‹
+D
+java:S1604°"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ
+r
+java:S1450º"VRemove the "jLabel1" field and declare it as a local variable in the relevant methods.(°ãÉ¸ÿÿÿÿÿ
+r
+java:S1450»"VRemove the "jLabel2" field and declare it as a local variable in the relevant methods.(™úòˆüÿÿÿÿ
+r
+java:S1450¼"VRemove the "jLabel3" field and declare it as a local variable in the relevant methods.(Îä€øÿÿÿÿ
+m
+java:S1450½"VRemove the "jLabel4" field and declare it as a local variable in the relevant methods.(«¢•ã
+m
+java:S1450¾"VRemove the "jLabel5" field and declare it as a local variable in the relevant methods.(ó Ù®
+A
+java:S1172"*Remove this unused method parameter "evt".(êğ¥µ
+N
+java:S1135"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ
+F
+java:S1197–"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ
+\
+java:S2147¥"ECombine this catch with the one at line 163, which has the same body.(¨¦Š½
+\
+java:S2147§"ECombine this catch with the one at line 165, which has the same body.(ã€ 
+[
+java:S2147©"ECombine this catch with the one at line 167, which has the same body.(ñÎ¯%

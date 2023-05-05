@@ -1,0 +1,7 @@
+run\ClientRun.class
+view\AddUserView$2.class
+controller\ClientCtr.class
+com\mycompany\udpclient\UDPClient.class
+view\AddUserView.class
+view\AddUserView$1.class
+model\User.class

@@ -1,0 +1,6 @@
+com\mycompany\udpserver\UDPServer.class
+controller\ServerCtr.class
+run\ServerRun.class
+controller\DAO.class
+model\User.class
+view\ServerView.class
