@@ -1,4 +1,13 @@
 
+|
+java:S2293›"YReplace the type specification in this constructor call with the diamond operator ("<>").(õÉžÚùÿÿÿÿ8ŠÞ¦ýþ0
+“
+java:S1319š"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(çÑÝ´þÿÿÿÿ8ŒÞ¦ýþ0
 J
-java:S1659"(Declare "clientPort" on a separate line.(²øã‘þÿÿÿÿ8Œ£±Üþ0
-Z	java:S106-"9Replace this use of System.out or System.err by a logger.(øÂÞËýÿÿÿÿ8’ø‹Ýþ0
+java:S1659"(Declare "clientPort" on a separate line.(²øã‘þÿÿÿÿ8žÞ¦ýþ0
+Z	java:S1062"9Replace this use of System.out or System.err by a logger.(øÂÞËýÿÿÿÿ8¡Þ¦ýþ0
+V	java:S106†"9Replace this use of System.out or System.err by a logger.(Ï£ûà8«Þ¦ýþ0
+N
+java:S1128"8Remove this unused import 'java.util.function.Supplier'.(†ïÿ‘
+I
+java:S1128"'Remove this unused import 'model.Type'.(™Ê˜Œþÿÿÿÿ8°Þ¦ýþ0

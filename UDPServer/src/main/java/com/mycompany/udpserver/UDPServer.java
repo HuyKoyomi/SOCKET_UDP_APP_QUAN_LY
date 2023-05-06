@@ -4,6 +4,8 @@
 
 package com.mycompany.udpserver;
 
+import controller.ServerCtr;
+
 /**
  *
  * @author huylm6
@@ -11,6 +13,7 @@ package com.mycompany.udpserver;
 public class UDPServer {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("UDP SERVER IS RUNNING ... ");
+        new ServerCtr();
     }
 }

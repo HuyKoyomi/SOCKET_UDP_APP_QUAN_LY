@@ -6,6 +6,8 @@ package controller;
 
 import java.sql.*;
 
+import model.Supplies;
+import model.Type;
 import model.User;
 
 /**
@@ -20,7 +22,7 @@ public class DAO {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/udpdb"
-                    + "?useUnicode=true&characterEncoding=utf-8", "root", "123456");
+                    + "?useUnicode=true&characterEncoding=utf-8", "root", "Koyomi@07042001");
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -37,6 +39,45 @@ public class DAO {
             ps.setString(4, u.getFullname());
             ps.executeUpdate();
             System.out.println("Chức năng: Đăng ký tài khoản");
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return false;
+    }
+    public boolean addType(Type u) {
+        String sql = "INSERT INTO tbltype(typecode, typename,description) VALUE (?,?,?)";
+        try {
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, u.getTypecode());
+            ps.setString(2, u.getTypename());
+            ps.setString(3, u.getDescription());
+            ps.executeUpdate();
+            System.out.println("Chức năng: Đăng ký loại đồ dùng");
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return false;
+    }
+    public boolean addSuppies(Supplies u) {
+        System.out.println("Chức năng: Đăng ký đồ đạc");
+        String sql = "INSERT INTO tblsupplies(suppliescode, suppliesname,image, ages, price,typeid) VALUE (?,?,?,?,?,?)";
+        try {
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, u.getSuppliescode());
+            ps.setString(2, u.getSuppliesname());
+            ps.setString(3, u.getImage());
+            ps.setInt(4, u.getAges());
+            ps.setInt(5, u.getPrice());
+            ps.setInt(6, u.getTypeid());
+            ps.executeUpdate();
+            System.out.println("Chức năng: Đăng ký đồ đạc");
             return true;
 
         } catch (Exception e) {

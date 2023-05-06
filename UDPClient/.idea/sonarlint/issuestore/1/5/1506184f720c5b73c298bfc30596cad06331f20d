@@ -1,0 +1,33 @@
+
+C
+java:S16046"(Make this anonymous inner class a lambda(ÒÇõ‡üÿÿÿÿ
+>
+java:S1604A"(Make this anonymous inner class a lambda(«ğãã
+D
+java:S1604Æ"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ
+8
+java:S1643™"Use a StringBuilder instead.(ë†¦ııÿÿÿÿ
+8
+java:S1643ç"Use a StringBuilder instead.(ë†¦ııÿÿÿÿ
+r
+java:S1450Ğ"VRemove the "jLabel1" field and declare it as a local variable in the relevant methods.(°ãÉ¸ÿÿÿÿÿ
+r
+java:S1450Ñ"VRemove the "jLabel2" field and declare it as a local variable in the relevant methods.(™úòˆüÿÿÿÿ
+r
+java:S1450Ò"VRemove the "jLabel3" field and declare it as a local variable in the relevant methods.(Îä€øÿÿÿÿ
+r
+java:S1450Ó"VRemove the "jPanel1" field and declare it as a local variable in the relevant methods.(´œ½ÿÿÿÿÿ
+A
+java:S1172‘"*Remove this unused method parameter "evt".(‘¦œ÷
+N
+java:S1135’"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ
+A
+java:S1172•"*Remove this unused method parameter "evt".(¾¥œš
+F
+java:S1197­"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ
+\
+java:S2147¼"ECombine this catch with the one at line 186, which has the same body.(¨¦Š½
+\
+java:S2147¾"ECombine this catch with the one at line 186, which has the same body.(ã€ 
+[
+java:S2147À"ECombine this catch with the one at line 186, which has the same body.(ñÎ¯%

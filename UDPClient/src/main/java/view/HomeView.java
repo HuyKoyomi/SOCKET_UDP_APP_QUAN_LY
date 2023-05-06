@@ -10,11 +10,11 @@ package view;
  */
 public class HomeView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form HomeView
-     */
+    private SuppliesView sv;
+    
     public HomeView() {
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**
@@ -29,10 +29,10 @@ public class HomeView extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnSuppliesView = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButton5 = new javax.swing.JButton();
-        TabbedPaneHome = new javax.swing.JTabbedPane();
+        tplMainBoard = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuHome = new javax.swing.JMenu();
         menuItemLogout = new javax.swing.JMenuItem();
@@ -55,16 +55,16 @@ public class HomeView extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton2);
 
-        jButton3.setText("Quản Lý Đồ Dùng");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSuppliesView.setText("Quản Lý Đồ Dùng");
+        btnSuppliesView.setFocusable(false);
+        btnSuppliesView.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSuppliesView.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSuppliesView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSuppliesViewActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton3);
+        jToolBar1.add(btnSuppliesView);
         jToolBar1.add(jSeparator2);
 
         jButton5.setText("Quản Lí Loại Đồ Dùng");
@@ -98,38 +98,45 @@ public class HomeView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 6, Short.MAX_VALUE)
+                .addGap(0, 9, Short.MAX_VALUE)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(TabbedPaneHome)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(tplMainBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 1003, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 6, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TabbedPaneHome, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE))
+                .addContainerGap(750, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(58, Short.MAX_VALUE)
+                    .addComponent(tplMainBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLogoutActionPerformed
-//        welcome x = new welcome();
-//        x.setVisible(true);
-//        this.dispose();
+        LoginView x = new LoginView();
+        x.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_menuItemLogoutActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-//        if (ts == null){
-//            ts = new them_sach();
-//            tplMainBoard.addTab("Thêm Sách",ts);
-//        }
-//        tplMainBoard.setSelectedComponent(ts);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnSuppliesViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuppliesViewActionPerformed
+        if (sv == null){
+            sv = new SuppliesView();
+            tplMainBoard.addTab("Quản lý đồ dùng",sv);
+        }
+        tplMainBoard.setSelectedComponent(sv);
+    }//GEN-LAST:event_btnSuppliesViewActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 //        if (qls == null){
@@ -175,9 +182,8 @@ public class HomeView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane TabbedPaneHome;
+    private javax.swing.JButton btnSuppliesView;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -186,5 +192,6 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu menuHome;
     private javax.swing.JMenuItem menuItemLogout;
+    private javax.swing.JTabbedPane tplMainBoard;
     // End of variables declaration//GEN-END:variables
 }

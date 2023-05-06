@@ -263,7 +263,7 @@ public class AddUserView extends javax.swing.JFrame implements ActionListener {
             ClientCtr ctr = new ClientCtr();
             ctr.sendAcction("2");
             ctr.sendUser(u);
-            String res = ctr.receiveUser();
+            String res = ctr.receiveResult();
             if (res.equals("ok")) {
                 JOptionPane.showMessageDialog(rootPane, "Tạo tài khoản thành công");
                 btnBackClick();

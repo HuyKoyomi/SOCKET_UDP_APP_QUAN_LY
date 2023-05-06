@@ -11,6 +11,10 @@ import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.function.Supplier;
+import model.Supplies;
+import model.Type;
 import model.User;
 
 /**
@@ -67,6 +71,23 @@ public class ClientCtr {
         }
     }
 
+    public String receiveResult() {
+        try {
+            // tạo ra một bộ đệm
+            byte[] data = new byte[1024];
+            DatagramPacket receivePkg = new DatagramPacket(data, data.length);
+            mySocket.receive(receivePkg);
+            ByteArrayInputStream bais = new ByteArrayInputStream(receivePkg.getData());
+            // lây dư liệu
+            ObjectInputStream ois = new ObjectInputStream(bais);
+            closeConnection();
+            return (String) ois.readObject();
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+        return "";
+    }
+
     // gửi thông tin user
     public void sendUser(User u) {
         try {
@@ -83,22 +104,52 @@ public class ClientCtr {
         }
     }
 
-    // nhận thông tin user
-    public String receiveUser() {
+    public void sendUser(Supplies u) {
         try {
-            // tạo ra một bộ đệm
-            byte[] data = new byte[1024];
-            DatagramPacket receivePkg = new DatagramPacket(data, data.length);
-            mySocket.receive(receivePkg);
-            ByteArrayInputStream bais = new ByteArrayInputStream(receivePkg.getData());
-            // lây dư liệu
-            ObjectInputStream ois = new ObjectInputStream(bais);
-            closeConnection();
-            return (String) ois.readObject();
+            // nhét dữ liệu vòa object để gửi
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(u);
+            byte[] data = baos.toByteArray();
+            // tạo pak
+            DatagramPacket senPkg = new DatagramPacket(data, data.length, InetAddress.getByName(serverHost), serverPort);
+            mySocket.send(senPkg);
         } catch (Exception err) {
             err.printStackTrace();
         }
-        return "";
+    }
+
+    public void sendSupplies(Supplies s) {
+        try {
+            // nhét dữ liệu vòa object để gửi
+            Supplies tmp = new Supplies(s.getAges(), s.getPrice(), s.getTypeid(), s.getSuppliescode(), s.getSuppliesname(), s.getImage());
+            ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
+            ObjectOutputStream oos1 = new ObjectOutputStream(baos1);
+            oos1.writeObject(tmp);
+            byte[] data = baos1.toByteArray();
+            // tạo pak
+            DatagramPacket senPkg = new DatagramPacket(data, data.length, InetAddress.getByName(serverHost), serverPort);
+            mySocket.send(senPkg);
+        } catch (Exception err) {
+            System.out.println("lỗi sendSupplies" + s.getSuppliescode());
+            err.printStackTrace();
+        }
+    }
+    // nhận thông tin
+
+    public Supplies receiveSupplies() {
+        Supplies u = new Supplies();
+        try {
+            byte[] data = new byte[1024];
+            receivePacket = new DatagramPacket(data, data.length);
+            mySocket.receive(receivePacket);
+            ByteArrayInputStream bais = new ByteArrayInputStream(receivePacket.getData());
+            ObjectInputStream ois = new ObjectInputStream(bais);
+            return (Supplies) ois.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return u;
     }
 
 }

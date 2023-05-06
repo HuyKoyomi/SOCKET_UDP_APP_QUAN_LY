@@ -235,11 +235,13 @@ public class LoginView extends javax.swing.JFrame implements ActionListener {
         ClientCtr ctr = new ClientCtr();
         ctr.sendAcction("1");
         ctr.sendUser(u);
-        String res = ctr.receiveUser();
+        String res = ctr.receiveResult();
         if (res.equals("ok")) {
-            JOptionPane.showMessageDialog(rootPane, "Đăng nhâp thành công");
+            HomeView dk = new HomeView();
+            dk.setVisible(true);    // 
+            this.dispose();
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Đăng nhâp thất bại");
+            JOptionPane.showMessageDialog(rootPane, "Thông tin đăng nhập hoặc mất khẩu không chính xác");
         }
     }
 
