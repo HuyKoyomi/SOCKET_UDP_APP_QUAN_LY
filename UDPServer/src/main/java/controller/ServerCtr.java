@@ -10,6 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.util.ArrayList;
 
 import model.Supplies;
 import model.TypeSup;
@@ -116,7 +117,11 @@ public class ServerCtr {
                     new ServerView().showMessage("action " + action + "Thất bại");
                 }
                 break;
-
+            case "8":
+                Supplies s8 = receiveSupplies();
+                ArrayList<Supplies> result = dao.getSelect(s8);
+                senListSupplies(result);
+                break;
             default:
                 new ServerView().showMessage("action " + action + "không tồn tại");
                 break;
@@ -195,20 +200,6 @@ public class ServerCtr {
         }
         return "";
     }
-    public String receiveString() {
-        try {
-            byte[] data = new byte[1024];
-            DatagramPacket receivePkg = new DatagramPacket(data, data.length);
-            myServer.receive(receivePkg);
-            ByteArrayInputStream bais = new ByteArrayInputStream(receivePkg.getData());
-            ObjectInputStream ois = new ObjectInputStream(bais);
-            return (String) ois.readObject();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
-
     public void sendResult(String res) {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -235,6 +226,21 @@ public class ServerCtr {
 
         }
     }
-    
+
+    public void senListSupplies (ArrayList<Supplies> list) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(list);
+            oos.flush();
+            byte[] data = baos.toByteArray();
+            DatagramPacket pkg = new DatagramPacket(data, data.length, receivePacket.getAddress(), receivePacket.getPort());
+            myServer.send(pkg);
+            System.out.println("Dữ liệu đã được gửi đi.");
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    }
 
 }

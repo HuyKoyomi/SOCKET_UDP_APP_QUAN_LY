@@ -12,6 +12,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 import model.Supplies;
 import model.TypeSup;
@@ -162,5 +163,24 @@ public class ClientCtr {
         }
         return u;
     }
+    public ArrayList<Supplies> receiveListSupplies() {
+        ArrayList<Supplies> u = new ArrayList<>();
+        try {
+            byte[] data = new byte[1024];
+            this.receivePacket = new DatagramPacket(data, data.length);
+            this.mySocket.receive(this.receivePacket);
+            ByteArrayInputStream bais = new ByteArrayInputStream(this.receivePacket.getData());
+            ObjectInputStream ois = new ObjectInputStream(bais);
+            this.closeConnection();
+            Object receivedObject = ois.readObject();
+            if (receivedObject instanceof List<?>) {
+                ArrayList<Supplies> objectList = (ArrayList<Supplies>) receivedObject;
+                return objectList;
+            }
+        } catch (Exception err) {
+            err.printStackTrace();
 
+        }
+        return u;
+    }
 }

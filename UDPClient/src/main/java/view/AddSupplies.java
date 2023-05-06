@@ -7,6 +7,9 @@ package view;
 import controller.ClientCtr;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.ByteArrayInputStream;
+import java.io.ObjectInputStream;
+import java.net.DatagramPacket;
 import javax.swing.JOptionPane;
 import model.Supplies;
 
@@ -171,6 +174,11 @@ public class AddSupplies extends javax.swing.JFrame implements ActionListener {
         );
 
         btnBack.setText("Quay lại");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Thêm mới đồ dùng");
@@ -218,6 +226,10 @@ public class AddSupplies extends javax.swing.JFrame implements ActionListener {
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -270,7 +282,7 @@ public class AddSupplies extends javax.swing.JFrame implements ActionListener {
     }
 
     public void btnBackClick() {
-
+        this.dispose();
     }
 
     public void btnAddClick() {
@@ -300,7 +312,7 @@ public class AddSupplies extends javax.swing.JFrame implements ActionListener {
             String res = ctr.receiveResult();
             if (res.equals("ok")) {
                 JOptionPane.showMessageDialog(rootPane, "Tạo đồ dùng thành công");
-                btnBackClick();
+//                btnBackClick();
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Tạo đồ dùng thất bại");
             }

@@ -1,0 +1,74 @@
+
+d
+java:S11929"NDefine a constant instead of duplicating this literal " Th√†nh c√¥ng" 6 times.(·Ñ”á
+_
+java:S11929"IDefine a constant instead of duplicating this literal "action " 13 times.(·Ñ”á
+h
+java:S1192<"MDefine a constant instead of duplicating this literal "Th·∫•t b·∫°i" 6 times.(îöÈë¸ˇˇˇˇ
+Ä
+java:S1319Ê"dThe type of "list" should be an interface such as "List" rather than the implementation "ArrayList".(∂Ûºá¯ˇˇˇˇ
+z
+java:S1488ò"^Immediately return this expression instead of assigning it to the temporary variable "result".(·™ùÙ˛ˇˇˇˇ
+z
+java:S1488ß"^Immediately return this expression instead of assigning it to the temporary variable "result".(∆ëƒ¶¸ˇˇˇˇ
+z
+java:S1488∂"^Immediately return this expression instead of assigning it to the temporary variable "result".(† úˆ˙ˇˇˇˇ
+=
+java:S2189#""Add an end condition to this loop.(òÔàûˇˇˇˇˇ
+m
+java:S37760"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(‰˜Ü¡˛ˇˇˇˇ
+N	java:S1062"9Replace this use of System.out or System.err by a logger.(ªƒá·
+K
+java:S22099"5Change this instance-reference to a static reference.(·Ñ”á
+@
+java:S24409"*Remove this instantiation of "ServerView".(·Ñ”á
+P
+java:S2209<"5Change this instance-reference to a static reference.(îöÈë¸ˇˇˇˇ
+E
+java:S2440<"*Remove this instantiation of "ServerView".(îöÈë¸ˇˇˇˇ
+K
+java:S2209D"5Change this instance-reference to a static reference.(·Ñ”á
+@
+java:S2440D"*Remove this instantiation of "ServerView".(·Ñ”á
+P
+java:S2209G"5Change this instance-reference to a static reference.(îöÈë¸ˇˇˇˇ
+E
+java:S2440G"*Remove this instantiation of "ServerView".(îöÈë¸ˇˇˇˇ
+K
+java:S2209N"5Change this instance-reference to a static reference.(·Ñ”á
+@
+java:S2440N"*Remove this instantiation of "ServerView".(·Ñ”á
+P
+java:S2209Q"5Change this instance-reference to a static reference.(îöÈë¸ˇˇˇˇ
+E
+java:S2440Q"*Remove this instantiation of "ServerView".(îöÈë¸ˇˇˇˇ
+K
+java:S2209X"5Change this instance-reference to a static reference.(·Ñ”á
+@
+java:S2440X"*Remove this instantiation of "ServerView".(·Ñ”á
+P
+java:S2209["5Change this instance-reference to a static reference.(îöÈë¸ˇˇˇˇ
+E
+java:S2440["*Remove this instantiation of "ServerView".(îöÈë¸ˇˇˇˇ
+K
+java:S2209h"5Change this instance-reference to a static reference.(·Ñ”á
+@
+java:S2440h"*Remove this instantiation of "ServerView".(·Ñ”á
+P
+java:S2209k"5Change this instance-reference to a static reference.(îöÈë¸ˇˇˇˇ
+E
+java:S2440k"*Remove this instantiation of "ServerView".(îöÈë¸ˇˇˇˇ
+K
+java:S2209r"5Change this instance-reference to a static reference.(·Ñ”á
+@
+java:S2440r"*Remove this instantiation of "ServerView".(·Ñ”á
+P
+java:S2209u"5Change this instance-reference to a static reference.(îöÈë¸ˇˇˇˇ
+E
+java:S2440u"*Remove this instantiation of "ServerView".(îöÈë¸ˇˇˇˇ
+R
+java:S2209~"5Change this instance-reference to a static reference.(á˚¥˚8ßçΩÜˇ0
+G
+java:S2440~"*Remove this instantiation of "ServerView".(á˚¥˚8ßçΩÜˇ0
+T	java:S106á"9Replace this use of System.out or System.err by a logger.(¯¬ﬁÀ˝ˇˇˇˇ
+[	java:S106Ô"9Replace this use of System.out or System.err by a logger.(Ïœ–ü˘ˇˇˇˇ8œıÉÜˇ0

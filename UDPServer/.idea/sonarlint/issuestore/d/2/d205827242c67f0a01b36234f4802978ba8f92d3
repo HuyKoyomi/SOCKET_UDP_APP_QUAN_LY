@@ -1,0 +1,31 @@
+
+‡
+java:S1319ª"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(•‹üï
+b
+java:S2095\"GUse try-with-resources or close this "Statement" in a "finally" clause.(ŠãÉ°úÿÿÿÿ
+j
+java:S2095q"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÓüĞûÿÿÿÿ
+e
+java:S20957"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÀÖĞ½
+e
+java:S2095I"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÀÖĞ½
+f
+java:S2095º"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÀÖĞ½
+e
+java:S2095$"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÀÖĞ½
+f
+java:S2095‰"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÀÖĞ½
+k
+java:S2095Ÿ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÓüĞûÿÿÿÿ
+H
+java:S4925"-Remove this "Class.forName()", it is useless.(¹µÖÁüÿÿÿÿ
+Q
+java:S6437"6Revoke and change this password, as it is compromised.(íÿûúÿÿÿÿ
+N	java:S106*"9Replace this use of System.out or System.err by a logger.(áİ…µ
+S	java:S106<"9Replace this use of System.out or System.err by a logger.(ŸšÀûÿÿÿÿ
+N	java:S106E"9Replace this use of System.out or System.err by a logger.(İğîñ
+N	java:S106Q"9Replace this use of System.out or System.err by a logger.(İğîñ
+S	java:S106b"9Replace this use of System.out or System.err by a logger.(Ò£î×øÿÿÿÿ
+O	java:S106’"9Replace this use of System.out or System.err by a logger.(±ş£ô
+O	java:S106¢"9Replace this use of System.out or System.err by a logger.(€±¡‘
+T	java:S106»"9Replace this use of System.out or System.err by a logger.(ÿ¸õûüÿÿÿÿ

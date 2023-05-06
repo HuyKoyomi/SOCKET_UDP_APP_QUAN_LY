@@ -1,0 +1,47 @@
+
+>
+java:S16043"(Make this anonymous inner class a lambda(ÿóÎ×
+C
+java:S1604>"(Make this anonymous inner class a lambda(Ã¾„éúÿÿÿÿ
+C
+java:S1604J"(Make this anonymous inner class a lambda(‹ıÉ¼üÿÿÿÿ
+>
+java:S1604T"(Make this anonymous inner class a lambda(òÇ»å
+D
+java:S1604±"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ
+z
+java:S1450¹"^Remove the "btnSuppliesView" field and declare it as a local variable in the relevant methods.(øé€†ùÿÿÿÿ
+n
+java:S1450º"WRemove the "jButton2" field and declare it as a local variable in the relevant methods.(¤½ÃÜ
+s
+java:S1450»"WRemove the "jButton5" field and declare it as a local variable in the relevant methods.(â¦Î©ûÿÿÿÿ
+l
+java:S1450¼"URemove the "jMenu2" field and declare it as a local variable in the relevant methods.(€˜ÇÛ
+t
+java:S1450½"XRemove the "jMenuBar1" field and declare it as a local variable in the relevant methods.(úıÁ›ÿÿÿÿÿ
+q
+java:S1450¾"ZRemove the "jSeparator1" field and declare it as a local variable in the relevant methods.(¦…×¬
+v
+java:S1450¿"ZRemove the "jSeparator2" field and declare it as a local variable in the relevant methods.(Æëâùÿÿÿÿÿ
+o
+java:S1450À"XRemove the "jToolBar1" field and declare it as a local variable in the relevant methods.(Æ³š
+s
+java:S1450Á"WRemove the "menuHome" field and declare it as a local variable in the relevant methods.(õÛğşÿÿÿÿ
+s
+java:S1450Â"]Remove the "menuItemLogout" field and declare it as a local variable in the relevant methods.(È­ºz
+@
+java:S1172{"*Remove this unused method parameter "evt".(Äß¯¿
+F
+java:S1172"*Remove this unused method parameter "evt".(¹¾ûüÿÿÿÿ
+F
+java:S1172…"*Remove this unused method parameter "evt".(úÎ¬£ûÿÿÿÿ
+A
+java:S1172"*Remove this unused method parameter "evt".(è¿é¦
+F
+java:S1197˜"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ
+\
+java:S2147§"ECombine this catch with the one at line 165, which has the same body.(¨¦Š½
+\
+java:S2147©"ECombine this catch with the one at line 165, which has the same body.(ã€ 
+[
+java:S2147«"ECombine this catch with the one at line 165, which has the same body.(ñÎ¯%

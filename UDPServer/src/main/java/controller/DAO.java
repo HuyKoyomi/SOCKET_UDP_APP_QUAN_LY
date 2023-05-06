@@ -5,6 +5,7 @@
 package controller;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import model.Supplies;
 import model.TypeSup;
@@ -133,7 +134,6 @@ public class DAO {
                 "SET suppliescode = ?, suppliesname = ?, image = ? , ages = ?, price = ? , typeid = ? " +
                 "WHERE suppliescode = ?";
         try {
-
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, u.getSuppliescode());
             ps.setString(2, u.getSuppliesname());
@@ -148,7 +148,6 @@ public class DAO {
 
         } catch (Exception e) {
             e.printStackTrace();
-
         }
         return false;
     }
@@ -166,5 +165,43 @@ public class DAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public ArrayList<Supplies> getSelect(Supplies u){
+        ArrayList<Supplies> arrayList = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM tblsupplies where id != 0";
+            if(u.getTypeid() != 0){
+                sql += " AND typeid = " +u.getTypeid() + " ";
+            }
+            if(u.getAges() != 0){
+                sql += " AND ages >= " + u.getAges() + " ";
+            }
+            if(u.getPrice() != 0){
+                sql += " AND price >= " + u.getPrice() + " ";
+            }
+            if(u.getId() != 0){
+                sql += " AND price <= " + u.getId() + " ";
+            }
+            PreparedStatement ps = conn.prepareStatement(sql);
+            System.out.println("SQL: " +  sql);
+            ResultSet re= ps.executeQuery(sql);
+            while (re.next()) {
+                Supplies x = new Supplies();
+                x.setId(re.getInt("id"));
+                x.setTypeid(re.getInt("typeid"));
+                x.setAges(re.getInt("ages"));
+                x.setPrice(re.getInt("price"));
+                x.setSuppliescode(re.getString("suppliescode"));
+                x.setSuppliesname(re.getString("suppliesname"));
+                x.setImage(re.getString("image"));
+                arrayList.add(x);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return arrayList;
     }
 }

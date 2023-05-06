@@ -191,7 +191,8 @@ public class AddType extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_txtCodeActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
+        AddSupplies screen = new AddSupplies();
+        screen.setVisible(true);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
