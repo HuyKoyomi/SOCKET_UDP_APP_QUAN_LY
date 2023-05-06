@@ -7,7 +7,7 @@ package controller;
 import java.sql.*;
 
 import model.Supplies;
-import model.Type;
+import model.TypeSup;
 import model.User;
 
 /**
@@ -47,7 +47,7 @@ public class DAO {
         }
         return false;
     }
-    public boolean addType(Type u) {
+    public boolean addType(TypeSup u) {
         String sql = "INSERT INTO tbltype(typecode, typename,description) VALUE (?,?,?)";
         try {
 
@@ -103,5 +103,27 @@ public class DAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public Supplies getByCode (String s){
+        Supplies supplies = new Supplies();
+        try {
+            Statement sta=conn.createStatement();
+            String where = "SELECT * FROM tblsupplies where suppliescode = " + s + " ";
+            ResultSet re=sta.executeQuery(where);
+            if  (re.next()) {
+                supplies.setId(re.getInt("id"));
+                supplies.setAges(re.getInt("ages"));
+                supplies.setPrice(re.getInt("price"));
+                supplies.setTypeid(re.getInt("typeid"));
+                supplies.setSuppliescode(re.getString("suppliescode"));
+                supplies.setSuppliesname(re.getString("suppliesname"));
+                supplies.setImage(re.getString("image"));
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return supplies;
     }
 }

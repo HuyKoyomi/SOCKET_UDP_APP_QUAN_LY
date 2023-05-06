@@ -29,7 +29,10 @@ create table tblsupplies(
 
 INSERT INTO  tbltype (typecode,typename,description)
 values ("sach","Sach", "sach");
-INSERT INTO  tbltype 
+INSERT INTO  tbltype (typecode,typename,description) 
 values ("vo","Vo", "Vo");
-INSERT INTO  tbltype 
+INSERT INTO  tbltype (typecode,typename,description) 
 values ("but","But", "But");
+
+INSERT INTO  tblsupplies (suppliescode,suppliesname,image,ages,price,typeid)
+values ("sach01","Sach", "sach",1,1,1);

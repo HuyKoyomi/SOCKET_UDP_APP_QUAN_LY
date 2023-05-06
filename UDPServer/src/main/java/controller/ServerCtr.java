@@ -10,11 +10,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.util.ArrayList;
 
 import model.Supplies;
-import model.Type;
+import model.TypeSup;
 import model.User;
 import view.ServerView;
 
@@ -83,8 +81,8 @@ public class ServerCtr {
                     new ServerView().showMessage("action " + action + "Thất bại");
                 }
                 break;
-            case "4":
-                Type t4 = receiveType();
+            case "4": // add Loại
+                TypeSup t4 = receiveType();
                 if (dao.addType(t4)) {
                     sendResult("ok");
                     new ServerView().showMessage("action " + action + " Thành công");
@@ -94,20 +92,12 @@ public class ServerCtr {
                 }
                 break;
 
-            case "5":
-                Supplies res = new Supplies( 1, 2,2, "suppliescode", "suppliesname", "image");
-//                ArrayList< Supplies> x = new ArrayList<>();
-//                x.add(res);
-//                Supplies result = new Supplies();
-//                result.setList(x);
-                sendSupplies(res);
-//                if (dao.addType()) {
-//                    sendResult("ok");
-//                    new ServerView().showMessage("action " + action + " Thành công");
-//                } else {
-//                    sendResult("fail");
-//                    new ServerView().showMessage("action " + action + "Thất bại");
-//                }
+            case "5": // tìm đồ dùng theo mã
+                String code = receiveAction();
+                System.out.println("code: "+code);
+                Supplies res = dao.getByCode(code);
+
+                sendResult(res);
                 break;
 
             default:
@@ -128,20 +118,6 @@ public class ServerCtr {
             err.printStackTrace();
         }
     }
-    public void sendResult(String res) {
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(res);
-            byte[] data = baos.toByteArray();
-            DatagramPacket pkg = new DatagramPacket(data, data.length, receivePacket.getAddress(), receivePacket.getPort());
-            myServer.send(pkg);
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-    }
-
     public User receiveUser() {
         User u = new User();
         try {
@@ -157,15 +133,15 @@ public class ServerCtr {
         }
         return u;
     }
-    public Type receiveType() {
-        Type u = new Type();
+    public TypeSup receiveType() {
+        TypeSup u = new TypeSup();
         try {
             byte[] data = new byte[1024];
             receivePacket = new DatagramPacket(data, data.length);
             myServer.receive(receivePacket);
             ByteArrayInputStream bais = new ByteArrayInputStream(receivePacket.getData());
             ObjectInputStream ois = new ObjectInputStream(bais);
-            Type result = (Type) ois.readObject();
+            TypeSup result = (TypeSup) ois.readObject();
             return result ;
         } catch (Exception e) {
             e.printStackTrace();
@@ -194,9 +170,7 @@ public class ServerCtr {
             DatagramPacket receivePkg = new DatagramPacket(data, data.length);
             myServer.receive(receivePkg);
             ByteArrayInputStream bais = new ByteArrayInputStream(receivePkg.getData());
-            // lây dư liệu
             ObjectInputStream ois = new ObjectInputStream(bais);
-//            closeConnection();
             return (String) ois.readObject();
         } catch (Exception e) {
             e.printStackTrace();
@@ -204,18 +178,32 @@ public class ServerCtr {
         return "";
     }
 
-    public void sendSupplies(Supplies s) {
+    public void sendResult(String res) {
         try {
-            ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
-            ObjectOutputStream oos1 = new ObjectOutputStream(baos1);
-            oos1.writeObject(s);
-            byte[] data = baos1.toByteArray();
-            DatagramPacket pkg = new DatagramPacket(data, data.length, InetAddress.getByName("localhost"), 7777);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(res);
+            byte[] data = baos.toByteArray();
+            DatagramPacket pkg = new DatagramPacket(data, data.length, receivePacket.getAddress(), receivePacket.getPort());
             myServer.send(pkg);
-        } catch (Exception err) {
-            System.out.println("lỗi sendSupplies" + s.getSuppliescode());
-            err.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+
         }
     }
+    public void sendResult(Supplies res) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(res);
+            byte[] data = baos.toByteArray();
+            DatagramPacket pkg = new DatagramPacket(data, data.length, receivePacket.getAddress(), receivePacket.getPort());
+            myServer.send(pkg);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    }
+    
 
 }

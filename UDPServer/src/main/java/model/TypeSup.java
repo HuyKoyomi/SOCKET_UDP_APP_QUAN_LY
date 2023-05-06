@@ -1,9 +1,11 @@
 package model;
 
-public class Type {
+import java.io.Serializable;
+
+public class TypeSup implements Serializable{
     private int id;
     private String typecode, typename, description;
-    public Type () {
+    public TypeSup () {
     }
 
     public int getId() {

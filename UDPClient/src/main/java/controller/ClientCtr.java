@@ -14,7 +14,7 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 import model.Supplies;
-import model.Type;
+import model.TypeSup;
 import model.User;
 
 /**
@@ -104,7 +104,7 @@ public class ClientCtr {
         }
     }
 
-    public void sendUser(Supplies u) {
+    public void sendUser(TypeSup u) {
         try {
             // nhét dữ liệu vòa object để gửi
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -121,13 +121,11 @@ public class ClientCtr {
 
     public void sendSupplies(Supplies s) {
         try {
-            // nhét dữ liệu vòa object để gửi
             Supplies tmp = new Supplies(s.getAges(), s.getPrice(), s.getTypeid(), s.getSuppliescode(), s.getSuppliesname(), s.getImage());
             ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
             ObjectOutputStream oos1 = new ObjectOutputStream(baos1);
             oos1.writeObject(tmp);
             byte[] data = baos1.toByteArray();
-            // tạo pak
             DatagramPacket senPkg = new DatagramPacket(data, data.length, InetAddress.getByName(serverHost), serverPort);
             mySocket.send(senPkg);
         } catch (Exception err) {
