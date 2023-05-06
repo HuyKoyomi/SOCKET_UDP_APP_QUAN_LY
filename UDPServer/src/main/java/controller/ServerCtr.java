@@ -46,7 +46,6 @@ public class ServerCtr {
 
     public void execute() {
         String action = receiveAction();
-
         System.out.println("action:"+ action);
         switch (action ){
             // đăng nhập
@@ -93,16 +92,35 @@ public class ServerCtr {
                 break;
 
             case "5": // tìm đồ dùng theo mã
-                String code = receiveAction();
-                System.out.println("code: "+code);
-                Supplies res = dao.getByCode(code);
-
+                Supplies s5 = receiveSupplies();
+                Supplies res = dao.getByCode(s5.getSuppliescode());
                 sendResult(res);
+                break;
+            case "6":
+                Supplies s6 = receiveSupplies();
+                if (dao.editSuppies(s6)) {
+                    sendResult("ok");
+                    new ServerView().showMessage("action " + action + " Thành công");
+                } else {
+                    sendResult("fail");
+                    new ServerView().showMessage("action " + action + "Thất bại");
+                }
+                break;
+            case "7":
+                Supplies s7 = receiveSupplies();
+                if (dao.deleteSuppies(s7.getSuppliescode())) {
+                    sendResult("ok");
+                    new ServerView().showMessage("action " + action + " Thành công");
+                } else {
+                    sendResult("fail");
+                    new ServerView().showMessage("action " + action + "Thất bại");
+                }
                 break;
 
             default:
                 new ServerView().showMessage("action " + action + "không tồn tại");
                 break;
+
 
         }
 
@@ -165,6 +183,19 @@ public class ServerCtr {
     }
 
     public String receiveAction() {
+        try {
+            byte[] data = new byte[1024];
+            DatagramPacket receivePkg = new DatagramPacket(data, data.length);
+            myServer.receive(receivePkg);
+            ByteArrayInputStream bais = new ByteArrayInputStream(receivePkg.getData());
+            ObjectInputStream ois = new ObjectInputStream(bais);
+            return (String) ois.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+    public String receiveString() {
         try {
             byte[] data = new byte[1024];
             DatagramPacket receivePkg = new DatagramPacket(data, data.length);

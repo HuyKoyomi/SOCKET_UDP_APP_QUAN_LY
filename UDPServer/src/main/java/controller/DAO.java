@@ -108,9 +108,10 @@ public class DAO {
     public Supplies getByCode (String s){
         Supplies supplies = new Supplies();
         try {
-            Statement sta=conn.createStatement();
-            String where = "SELECT * FROM tblsupplies where suppliescode = " + s + " ";
-            ResultSet re=sta.executeQuery(where);
+            String where = "SELECT * FROM tblsupplies where suppliescode = ?";
+            PreparedStatement ps = conn.prepareStatement(where);
+            ps.setString(1, s);
+            ResultSet re=ps.executeQuery();
             if  (re.next()) {
                 supplies.setId(re.getInt("id"));
                 supplies.setAges(re.getInt("ages"));
@@ -125,5 +126,45 @@ public class DAO {
             e.printStackTrace();
         }
         return supplies;
+    }
+
+    public boolean editSuppies(Supplies u) {
+        String sql = "UPDATE  tblsupplies " +
+                "SET suppliescode = ?, suppliesname = ?, image = ? , ages = ?, price = ? , typeid = ? " +
+                "WHERE suppliescode = ?";
+        try {
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, u.getSuppliescode());
+            ps.setString(2, u.getSuppliesname());
+            ps.setString(3, u.getImage());
+            ps.setInt(4, u.getAges());
+            ps.setInt(5, u.getPrice());
+            ps.setInt(6, u.getTypeid());
+            ps.setString(7, u.getSuppliescode());
+            ps.executeUpdate();
+            System.out.println("Chức năng: Sửa đồ đạc");
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return false;
+    }
+
+    public boolean deleteSuppies (String s){
+
+        try {
+            String where = "DELETE FROM tblsupplies where suppliescode = ?";
+            PreparedStatement ps = conn.prepareStatement(where);
+            ps.setString(1, s);
+            ps.executeUpdate();
+            System.out.println("Chức năng: Xóa đồ đạc");
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

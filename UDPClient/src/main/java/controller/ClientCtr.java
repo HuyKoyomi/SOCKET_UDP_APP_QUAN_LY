@@ -70,6 +70,18 @@ public class ClientCtr {
             err.printStackTrace();
         }
     }
+    public void sendString(String acction) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(acction);
+            byte[] data = baos.toByteArray();
+            DatagramPacket pkg = new DatagramPacket(data, data.length, InetAddress.getByName(serverHost), serverPort);
+            mySocket.send(pkg);
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+    }
 
     public String receiveResult() {
         try {
@@ -143,6 +155,7 @@ public class ClientCtr {
             mySocket.receive(receivePacket);
             ByteArrayInputStream bais = new ByteArrayInputStream(receivePacket.getData());
             ObjectInputStream ois = new ObjectInputStream(bais);
+             closeConnection();
             return (Supplies) ois.readObject();
         } catch (Exception e) {
             e.printStackTrace();
